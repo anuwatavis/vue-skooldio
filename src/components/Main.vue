@@ -1,14 +1,27 @@
 <template>
-  <div class="main">{{ text + "Anuwat" }} {{ number + 10 }}</div>
+  <div class="main">
+    <ul>
+      <li v-for="todo in todos" :key="todo.time">
+        {{ todo.text | capitalize }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
   name: "Main",
+  filters: {
+    capitalize(val) {
+      return val.toUpperCase();
+    }
+  },
   data() {
     return {
-      text: "Hello World",
-      number: 3
+      todos: [
+        { text: "Hello", time: 1524035 },
+        { text: "sukthong", time: 2004035 }
+      ]
     };
   }
 };
